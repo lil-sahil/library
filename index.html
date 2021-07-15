@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Personal Library</h1>
+
+    <div class="inner-container">
+
+      <div class="books-container">
+          <div class="book-card">
+          <h2 class="book-title">Test</h2>
+          <h2 class="author">John Doe</h2>
+          <h2 class="pages">321</h2>
+          <h2 class="read">Yes</h2>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button type="submit" class = "btn add-btn">Add</button>
+        <button type="submit" class = "btn remove-btn">Remove</button>
+      </div>
+
+      <!-- This needs to be hidden until the 'Add button is clicked' -->
+      
+      <form class="form-container">
+        <h2 class = "form-text">Enter Book Name</h2>
+        <input type="text" name = "book-title" class = "book-title">
+
+        <h2 class = "form-text">Enter Authour Name</h2>
+        <input type="text" name = "author" class = "author">
+
+        <h2 class = "form-text">Enter the Number of Pages</h2>
+        <input type="number" name = "book-title" class = "pages">
+
+        <h2 class = "form-text">Enter Book Name</h2>
+        Yes<input type="radio" name = "read" value = "yes">
+        No<input type="radio" name = "read" value = "no">
+
+
+        <button type = "submit" class = "btn submit-btn">Submit</button>
+      </form>
+      
+
+    </div>
+  </div>
+</body>
+
+<script src="script.js"></script>
+</html>

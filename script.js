@@ -1,10 +1,3 @@
-
-const submitButton = document.querySelector('.submit-btn');
-
-// Event listner for submit button
-submitButton.addEventListener(onclick, addBookToLibrary);
-
-
 // Book array as defined by the user;
 let bookArray = []
 
@@ -19,25 +12,33 @@ function Book(title, author, pages, read){
 
 
 // This function needs to be called when the user hits "OK" after entering the details into the form.
-function addBookToLibrary(){  
-  let bookName = document.querySelector('form-container > .book-title').value;  
-  let bookAuthor = document.querySelector('.form-container > .author').value;  
-  let bookPages = document.querySelector('.form-container > .pages').value;  
-  let read = document.querySelector('.form-container > .read').value;
-
-  console.log(bookName);
-
-  bookArray.push(new Book(bookName, bookAuthor, bookPages, read));
+function addBookToLibrary(title, author, pages, read){  
+  bookArray.push(new Book(title, author, pages, read));
 }
 
 
-// Validate form
-function validateForm(name, author, pages, read){
-  if ( (name !== "") && (author !== "") && ( (pages !== "") && (parseInt(pages) !== Nan) ) && (read == "yes" || read == "no") ){
-    return true;
-  }
 
-  else{
-    return false;
-  }
+
+const bookTitle = document.querySelector('#title-field > input');
+
+const button = document.querySelector('form > .submit-btn');
+
+
+button.addEventListener("click",myFunc);
+
+function myFunc(e){
+  e.preventDefault();
+  let title = bookTitle.value;
+  let author = "jane doe";
+  let pages = 23;
+  let read = true;
+
+  addBookToLibrary(title, author, pages, read);
+
 }
+
+
+
+const seeButton = document.querySelector('.see-btn');
+
+seeButton.addEventListener("click", ()=> console.log(bookArray));

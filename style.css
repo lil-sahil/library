@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #03366d;
+    color: #fff;
+    height: 90vh;
+}
+
+.container {
+    height: 100%;
+    width: 80vw;
+    margin: 70px auto;
+    text-align: center;
+}
+
+/* Main Title */
+.main-title {
+    margin-bottom: 70px;
+}
+
+/* Inner container */
+.inner-container {
+    display: flex;
+    /* width: 100%;
+    height: 80%; */
+    justify-content: space-between;
+    padding: 10px;
+    background-color: red;
+}
+
+.books-container {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.book-card {
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: blue;
+}
+
+.book-card > h2{
+    padding: 10px;
+}
+
+
+
+
+
+
+/* Modal */
+/* .form-container {
+    display: none;
+} */

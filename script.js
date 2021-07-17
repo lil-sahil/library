@@ -3,6 +3,8 @@ const bookAuthor = document.querySelector('#author-field > input');
 const bookPage = document.querySelector('#page-field > input');
 const bookRead = document.querySelectorAll('#read-field > input');
 
+let booksContainer = document.querySelector('.books-container');
+
 const submitButton = document.querySelector('form > .submit-btn');
 
 console.log(bookPage.value);
@@ -50,13 +52,14 @@ function myFunc(e){
   if (dataValidation(title, author, pages, read)){
 
     addBookToLibrary(title, author, pages, read);
+    
+    createBookCard(title, author, pages, read);
 
     clearFromFields();
+
   }
 
-  else {
-    return false;
-  }
+  
 }
 
 
@@ -113,6 +116,39 @@ function clearFromFields(){
 
 
 // Display items in bookarray as flex items
+
+function createBookCard(title, author, pages, read){
+
+  // Initialize book card
+  let newCard = createEle('div', 'book-card');
+  booksContainer.appendChild(newCard);
+
+  // Fill info
+  
+  let titleValue = createEle('h2', 'title');
+  titleValue.textContent = title;
+  newCard.append(titleValue);
+  
+  let authorValue = createEle('h2', 'author');
+  authorValue.textContent = author;
+  newCard.append(authorValue);
+  
+  let pageValue = createEle('h2', 'pages');
+  pageValue.textContent = pages;
+  newCard.append(pageValue);
+  
+  let readValue = createEle('h2', 'read');
+  readValue.textContent = read;
+  newCard.append(readValue);
+}
+
+// Create element
+function createEle(ele, cls){
+  let newElement = document.createElement(ele);
+  newElement.classList.add(cls);
+
+  return newElement;
+}
 
 
 const seeButton = document.querySelector('.see-btn');

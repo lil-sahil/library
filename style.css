@@ -11,7 +11,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #03366d;
+    /* background-color: #03366d; */
     color: #fff;
     height: 90vh;
 }
@@ -21,6 +21,8 @@ body {
     width: 80vw;
     margin: 70px auto;
     text-align: center;
+    position: relative;
+    background: blue;
 }
 
 /* Main Title */
@@ -53,6 +55,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: blue;
+    margin: 5px;
 }
 
 .book-card > h2{
@@ -65,6 +68,33 @@ body {
 
 
 /* Modal */
-/* .form-container {
-    display: none;
-} */
+
+.modal {
+    display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: rgba(0,0,0,0.5);
+    height: 100%;
+    width: 100%;
+}
+.form-container {
+    width: 400px;
+    background: white;
+    margin: 70px auto;
+    color: #333;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.form-container label {
+    display: block;
+    padding: 20px 0px;
+}
+
+.form-container button {
+    height: 40px;
+    width: 100%;
+}
+

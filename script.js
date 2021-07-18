@@ -7,7 +7,9 @@ let booksContainer = document.querySelector('.books-container');
 
 const submitButton = document.querySelector('form > .submit-btn');
 
-console.log(bookPage.value);
+const addButton = document.querySelector(".button-container .add-btn");
+const modal = document.querySelector(".modal");
+
 
 // Book array as defined by the user;
 let bookArray = []
@@ -149,6 +151,20 @@ function createEle(ele, cls){
 
   return newElement;
 }
+
+
+
+// Show Modal
+
+addButton.addEventListener("click", () => modal.style.display = 'block');
+
+// Clode Modal
+
+window.addEventListener('click', (e) => {
+  if (e.target.classList[0] === "modal"){
+    modal.style.display = 'none';
+  }
+});
 
 
 const seeButton = document.querySelector('.see-btn');

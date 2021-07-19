@@ -128,19 +128,19 @@ function createBookCard(title, author, pages, read){
   // Fill info
   
   let titleValue = createEle('h2', 'title');
-  titleValue.textContent = title;
+  titleValue.textContent = `Title: ${title}`;
   newCard.append(titleValue);
   
   let authorValue = createEle('h2', 'author');
-  authorValue.textContent = author;
+  authorValue.textContent = `Author: ${author}`;
   newCard.append(authorValue);
   
   let pageValue = createEle('h2', 'pages');
-  pageValue.textContent = pages;
+  pageValue.textContent = `Pages: ${pages}`;
   newCard.append(pageValue);
   
   let readValue = createEle('h2', 'read');
-  readValue.textContent = read;
+  readValue.textContent = `Read? ${read}`;
   newCard.append(readValue);
 }
 

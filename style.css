@@ -86,6 +86,17 @@ body {
     padding: 10px;
 }
 
+/* Book Card Toggle */
+.book-card .fas {
+    color: green;
+    display: block;
+}
+
+.book-card .far {
+    color: red;
+    display: block;
+}
+
 
 /* Buttons */
 

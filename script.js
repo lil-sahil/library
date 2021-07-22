@@ -1,3 +1,5 @@
+
+
 const bookTitle = document.querySelector('#title-field > input');
 const bookAuthor = document.querySelector('#author-field > input');
 const bookPage = document.querySelector('#page-field > input');
@@ -10,23 +12,25 @@ const submitButton = document.querySelector('form > .submit-btn');
 const addButton = document.querySelector(".button-container .add-btn");
 const modal = document.querySelector(".modal");
 
+let book_counter = 0;
 
 // Book array as defined by the user;
 let bookArray = []
 
 
 // All books to be stored as objects.
-function Book(title, author, pages, read){
+function Book(title, author, pages, read, counter){
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
+  this.counter = counter;
 }
 
 
 // This function needs to be called when the user hits "OK" after entering the details into the form.
 function addBookToLibrary(title, author, pages, read){  
-  bookArray.push(new Book(title, author, pages, read));
+  bookArray.push(new Book(title, author, pages, read, book_counter));
 }
 
 
@@ -53,9 +57,9 @@ function myFunc(e){
 
   if (dataValidation(title, author, pages, read)){
 
-    addBookToLibrary(title, author, pages, read);
-    
     createBookCard(title, author, pages, read);
+    
+    addBookToLibrary(title, author, pages, read);
 
     clearFromFields();
 
@@ -121,6 +125,8 @@ function clearFromFields(){
 
 function createBookCard(title, author, pages, read){
 
+  book_counter += 1;
+
   // Initialize book card
   let newCard = createEle('div', 'book-card');
   booksContainer.appendChild(newCard);
@@ -139,20 +145,44 @@ function createBookCard(title, author, pages, read){
   pageValue.textContent = `Pages: ${pages}`;
   newCard.append(pageValue);
   
+
+  // Toggle Switch
   let readValue = createEle('h2', 'read');
-  readValue.textContent = `Read? ${read}`;
+  
+  const toggleOn = createEle('i', 'fas fa-check-circle');
+  const toggleOff = createEle('i', "far fa-check-circle");
+
+  // Data tracking logic
+  toggleOn.addEventListener('click', (e)=> console.log(e.target.dataset.counter));
+  toggleOff.addEventListener('click', (e)=> console.log(e.target.dataset.counter));
+ 
+  if (read==='yes'){
+    toggleOn.setAttribute('data-counter', `${book_counter}`);
+    readValue.append(toggleOn);
+  }
+  else if (read ==='no'){
+    toggleOff.setAttribute('data-counter', `${book_counter}`);
+    readValue.append(toggleOff)
+  }
+  // readValue.textContent = `Read?`;
   newCard.append(readValue);
 }
 
 // Create element
 function createEle(ele, cls){
   let newElement = document.createElement(ele);
-  newElement.classList.add(cls);
+
+  clsArray = cls.split(" ");
+  
+  clsArray.forEach((cls) => newElement.classList.add(cls));
 
   return newElement;
 }
 
-
+// Toggle Button Click Logic
+function clickToggleButton (){
+  return 1;
+}
 
 // Show Modal
 

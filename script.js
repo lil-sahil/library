@@ -28,6 +28,7 @@ function Book(title, author, pages, read, counter){
 }
 
 
+
 // This function needs to be called when the user hits "OK" after entering the details into the form.
 function addBookToLibrary(title, author, pages, read){  
   bookArray.push(new Book(title, author, pages, read, book_counter));
@@ -129,7 +130,13 @@ function createBookCard(title, author, pages, read){
 
   // Initialize book card
   let newCard = createEle('div', 'book-card');
+  let deleteButton = createEle('i', "fas fa-trash-alt");
+  deleteButton.setAttribute('data-counter', `${book_counter}`);
+  newCard.append(deleteButton);
   booksContainer.appendChild(newCard);
+
+  // Delete button
+  deleteButton.addEventListener('click', (e) => deleteCard(e));
 
   // Fill info
   
@@ -153,8 +160,8 @@ function createBookCard(title, author, pages, read){
   const toggleOff = createEle('i', "far fa-check-circle");
 
   // Data tracking logic
-  toggleOn.addEventListener('click', (e)=> console.log(e.target.dataset.counter));
-  toggleOff.addEventListener('click', (e)=> console.log(e.target.dataset.counter));
+  toggleOn.addEventListener('click', (e)=> clickToggleButton(e));
+  toggleOff.addEventListener('click', (e)=> clickToggleButton(e));
  
   if (read==='yes'){
     toggleOn.setAttribute('data-counter', `${book_counter}`);
@@ -180,15 +187,40 @@ function createEle(ele, cls){
 }
 
 // Toggle Button Click Logic
-function clickToggleButton (){
-  return 1;
+function clickToggleButton (e){
+  let data = e.target.dataset.counter;
+  
+  if (e.target.classList.contains('fas')){
+    // Change state of the green and red check mark
+    e.target.classList.remove('fas');
+    e.target.classList.add('far');
+
+    // Change read state in book array
+    bookArray[data-1].read = 'no';
+  }
+  
+  else if (e.target.classList.contains('far')){
+    e.target.classList.remove('far');
+    e.target.classList.add('fas');
+
+    // Change read state in book array
+    bookArray[data-1].read = 'yes';
+  }
+}
+
+
+// Delete Functionality
+function deleteCard(e){
+  
+  bookArray = bookArray.filter(item => item.counter !== parseInt(e.target.dataset.counter));
+  e.target.parentElement.remove();
 }
 
 // Show Modal
 
 addButton.addEventListener("click", () => modal.style.display = 'block');
 
-// Clode Modal
+// Close Modal
 
 window.addEventListener('click', (e) => {
   if (e.target.classList[0] === "modal"){

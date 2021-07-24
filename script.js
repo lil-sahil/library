@@ -7,7 +7,8 @@ const bookRead = document.querySelectorAll('#read-field > input');
 
 let booksContainer = document.querySelector('.books-container');
 
-const submitButton = document.querySelector('form > .submit-btn');
+const submitButton = document.querySelector('form .modal-btn .submit-btn');
+const closeButton = document.querySelector('form .modal-btn .close-btn');
 
 const addButton = document.querySelector(".button-container .add-btn");
 const modal = document.querySelector(".modal");
@@ -222,6 +223,8 @@ addButton.addEventListener("click", () => modal.style.display = 'block');
 
 // Close Modal
 
+closeButton.addEventListener('click', () => modal.style.display = 'none');
+
 window.addEventListener('click', (e) => {
   if (e.target.classList[0] === "modal"){
     modal.style.display = 'none';
@@ -229,6 +232,10 @@ window.addEventListener('click', (e) => {
 });
 
 
-const seeButton = document.querySelector('.see-btn');
 
-seeButton.addEventListener("click", ()=> console.log(bookArray));
+
+
+// Button to see the Bookarray for troubleshooting
+// const seeButton = document.querySelector('.see-btn');
+
+// seeButton.addEventListener("click", ()=> console.log(bookArray));

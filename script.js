@@ -1,5 +1,3 @@
-
-
 const bookTitle = document.querySelector('#title-field > input');
 const bookAuthor = document.querySelector('#author-field > input');
 const bookPage = document.querySelector('#page-field > input');
@@ -20,19 +18,38 @@ let bookArray = []
 
 
 // All books to be stored as objects.
-function Book(title, author, pages, read, counter){
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.counter = counter;
+// function Book(title, author, pages, read, counter){
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+//   this.counter = counter;
+// }
+
+// All books to be stored as object.
+
+class Book {
+
+  constructor(title, author, pages, read, counter){
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.counter = counter;
+  };
+
+  addBook(book){
+    bookArray.push(book);
+  }
 }
 
 
 
 // This function needs to be called when the user hits "OK" after entering the details into the form.
 function addBookToLibrary(title, author, pages, read){  
-  bookArray.push(new Book(title, author, pages, read, book_counter));
+  let newBook = new Book(title, author, pages, read, book_counter);
+  newBook.addBook(newBook);
+  console.log(bookArray);
 }
 
 
@@ -197,7 +214,11 @@ function clickToggleButton (e){
     e.target.classList.add('far');
 
     // Change read state in book array
-    bookArray[data-1].read = 'no';
+    for (let i = 0; i < bookArray.length; i++){
+      if (bookArray.counter === data){
+        bookArray[i].read = 'no';
+      };
+    };
   }
   
   else if (e.target.classList.contains('far')){
@@ -205,9 +226,13 @@ function clickToggleButton (e){
     e.target.classList.add('fas');
 
     // Change read state in book array
-    bookArray[data-1].read = 'yes';
-  }
-}
+    for (let i = 0; i < bookArray.length; i++){
+      if (bookArray.counter === data){
+        bookArray[i].read = 'yes';
+      };
+    };
+  };
+};
 
 
 // Delete Functionality
